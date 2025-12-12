@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Vaga - Driva</title>
+
+    <!-- Google Fonts: Lexend (Titles) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --driva-white: #F8F9FC;
+            --driva-black: #07131E;
+            --driva-blue: #003355;
+            --driva-orange: #F07F2D;
+            --driva-gray: #475467;
+
+            --font-title: 'Lexend', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* --- Reset e Estilos Básicos --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--driva-white);
+            color: var(--driva-gray);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* --- Container Principal --- */
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 700px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 51, 85, 0.08);
+            /* Shadow with blue tint */
+            border-top: 6px solid var(--driva-orange);
+            /* Orange accent */
+        }
+
+        /* --- Cabeçalho --- */
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        header h1 {
+            font-family: var(--font-title);
+            font-size: 28px;
+            color: var(--driva-black);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            color: var(--driva-gray);
+            font-size: 15px;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: 32px;
+            color: var(--driva-blue);
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* --- Formulário --- */
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--driva-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title span {
+            background-color: #E0F2FE;
+            /* Light blue */
+            color: var(--driva-blue);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: var(--font-title);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--driva-black);
+        }
+
+        label small {
+            color: #94a3b8;
+            font-weight: normal;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: var(--font-body);
+            transition: all 0.3s;
+            background-color: #fff;
+            color: var(--driva-black);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--driva-blue);
+            box-shadow: 0 0 0 3px rgba(0, 51, 85, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* --- Radio Buttons Customizados --- */
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--driva-gray);
+        }
+
+        .radio-option input[type="radio"] {
+            accent-color: var(--driva-blue);
+        }
+
+        /* --- Botão --- */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--driva-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--font-title);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #00223a;
+            /* Darker blue */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo"><img src="https://app.datadriva.com/static/img/brands/logo.png" alt="Logo da Driva"
+                    style="height: 50px;"></div>
+            <h1>Solicitação de Abertura de Vagas</h1>
+            <p>Formulário destinado à solicitação de novas vagas da Driva.io. Deve ser preenchido pelo gestor
+                responsável, com informações sobre a necessidade, perfil desejado e alinhamento com o planejamento da
+                área. </p>
+        </header>
+
+        <form action="#" method="POST">
+
+            <div class="form-section">
+                <div class="section-title"><span>1</span> Dados da Vaga</div>
+
+                <div class="form-group">
+                    <label for="nome-vaga">Nome da Vaga</label>
+                    <input type="text" id="nome-vaga" name="nome_vaga"
+                        placeholder="Ex: SDR Outbound, Desenvolvedor Front-end" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="area-vaga">Área da Vaga</label>
+                    <select id="area-vaga" name="area_vaga" required>
+                        <option value="" disabled selected>Selecione a área...</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="gente-gestao">Gente e Gestão</option>
+                        <option value="operacoes">Operações</option>
+                        <option value="produtos">Produtos</option>
+                        <option value="tecnologia">Tecnologia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="senioridade">Qual a senioridade?</label>
+                    <select id="senioridade" name="senioridade" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="estagio">Estágio</option>
+                        <option value="junior">Analista Júnior</option>
+                        <option value="pleno">Analista Pleno</option>
+                        <option value="senior">Analista Sênior</option>
+                        <option value="especialista">Especialista</option>
+                        <option value="lead">Coordenador</option>
+                        <option value="gerencia">Gerência</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Qual a cidade? <small>(Deixe em branco se for 100% remoto)</small></label>
+                    <input type="text" id="cidade" name="cidade" placeholder="Ex: Curitiba - PR">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title"><span>2</span> Perfil do Candidato</div>
+
+                <div class="form-group">
+                    <label>Curso Superior</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="curso_superior" value="Obrigatório"
+                                required>
+                            Obrigatório</label>
+                        <label class="radio-option"><input type="radio" name="curso_superior"
+                                value="Desejável?">Desejável</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="formacao">Curso de Formação <small>(Se obrigatório, qual curso?)</small></label>
+                    <input type="text" id="formacao" name="formacao"
+                        placeholder="Ex: Superior em Marketing ou Publicidade">
+                </div>
+
+                <div class="form-group">
+                    <label for="experiencia">Experiências Prévias Profissionais</label>
+                    <textarea id="experiencia" name="experiencia"
+                        placeholder="O que o candidato precisa ter feito anteriormente? Ex: Ter trabalhado em SaaS, ter usado CRM Pipedrive..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="keywords">Palavras-chave do LinkedIn <small>(Para busca ativa)</small></label>
+                    <input type="text" id="keywords" name="keywords" placeholder="Ex: B2B, React, Python, Inside Sales"
+                        required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title"><span>3</span> Descrição da Vaga</div>
+
+                <div class="form-group">
+                    <label for="criterios-inclusao">Critérios de inclusão de candidatos</label>
+                    <textarea id="criterios-inclusao" name="criterios_inclusao"
+                        placeholder="Mencione aqui os critérios de inclusão de candidatos..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="desafio-vaga">Principal desafio da vaga</label>
+                    <textarea id="desafio-vaga" name="desafio_vaga"
+                        placeholder="Mencione uma breve descrição do principal desafio da vaga..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="responsabilidades">Responsabilidades da vaga</label>
+                    <textarea id="responsabilidades" name="responsabilidades"
+                        placeholder="Descreva as principais responsabilidades da posição..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="requisitos">Requisitos da vaga</label>
+                    <textarea id="requisitos" name="requisitos"
+                        placeholder="Liste os requisitos técnicos e comportamentais necessários..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="diferenciais">Diferenciais</label>
+                    <textarea id="diferenciais" name="diferenciais"
+                        placeholder="O que seria um diferencial para o candidato? Ex: Certificações, idiomas, experiências específicas..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title"><span>4</span> Detalhes da Oferta</div>
+
+                <div class="form-group">
+                    <label>Regime Trabalhista</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="contratacao" value="CLT" required>
+                            CLT</label>
+                        <label class="radio-option"><input type="radio" name="contratacao" value="PJ"> PJ</label>
+                        <label class="radio-option"><input type="radio" name="contratacao" value="Estagio">
+                            Estágio</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Modelo de Trabalho</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="modelo_trabalho" value="Remoto" required>
+                            100% Remoto</label>
+                        <label class="radio-option"><input type="radio" name="modelo_trabalho" value="Hibrido">
+                            Híbrido</label>
+                        <label class="radio-option"><input type="radio" name="modelo_trabalho" value="Presencial">
+                            Presencial</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dias-presencial">Quantas vezes por semana precisa vir presencial? <small>(Se
+                            aplicável)</small></label>
+                    <select id="dias-presencial" name="dias_presencial">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="0">Não se aplica (100% remoto)</option>
+                        <option value="1">1 vez por semana</option>
+                        <option value="2">2 vezes por semana</option>
+                        <option value="3">3 vezes por semana</option>
+                        <option value="4">4 vezes por semana</option>
+                        <option value="5">5 vezes por semana (Presencial)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="remuneracao">Remuneração (Faixa Salarial)</label>
+                    <input type="text" id="remuneracao" name="remuneracao" placeholder="Ex: R$ 4.000 a R$ 5.000"
+                        required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btn-submit">Solicitar Abertura de Vaga</button>
+
+        </form>
+    </div>
+
+    <script>
+        // ==============================================
+        // CONFIGURAÇÃO - Cole aqui a URL do seu Apps Script
+        // ==============================================
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxu6G67zAUE5WtPhM0EcAaj2jim16u0eZczRp1dzJhhunmGNciTuo_GrxuxUhgBn9M5cg/exec';
+        // ==============================================
+
+        const form = document.querySelector('form');
+        const submitBtn = document.getElementById('btn-submit');
+
+        // Formatação automática de moeda (R$)
+        const remuneracaoInput = document.getElementById('remuneracao');
+        remuneracaoInput.addEventListener('input', function (e) {
+            let value = e.target.value;
+
+            // Remove tudo que não é número
+            value = value.replace(/\D/g, '');
+
+            // Se vazio, limpa o campo
+            if (value === '') {
+                e.target.value = '';
+                return;
+            }
+
+            // Converte para número e formata
+            const number = parseInt(value, 10);
+            const formatted = number.toLocaleString('pt-BR');
+
+            e.target.value = 'R$ ' + formatted;
+        });
+
+        // Garante que o campo comece com R$ ao focar
+        remuneracaoInput.addEventListener('focus', function (e) {
+            if (e.target.value === '') {
+                e.target.value = 'R$ ';
+            }
+        });
+
+        // Remove R$ se o campo ficar vazio ao sair
+        remuneracaoInput.addEventListener('blur', function (e) {
+            if (e.target.value === 'R$ ' || e.target.value === 'R$') {
+                e.target.value = '';
+            }
+        });
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Validação básica
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Altera o botão para estado de loading
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+
+            // Coleta os dados do formulário
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Necessário para Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Como usamos no-cors, não conseguimos ler a resposta
+                // Assumimos sucesso se não houver erro
+                showMessage('✅ Solicitação enviada com sucesso! Em breve entraremos em contato.', 'success');
+                form.reset();
+
+            } catch (error) {
+                console.error('Erro ao enviar:', error);
+                showMessage('❌ Erro ao enviar solicitação. Por favor, tente novamente.', 'error');
+            } finally {
+                // Restaura o botão
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }
+        });
+
+        function showMessage(message, type) {
+            // Remove mensagem anterior se existir
+            const existingMsg = document.querySelector('.form-message');
+            if (existingMsg) existingMsg.remove();
+
+            // Cria a mensagem
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'form-message';
+            msgDiv.textContent = message;
+            msgDiv.style.cssText = `
+                padding: 16px;
+                border-radius: 8px;
+                margin-top: 20px;
+                text-align: center;
+                font-weight: 500;
+                ${type === 'success'
+                    ? 'background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;'
+                    : 'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'}
+            `;
+
+            // Insere após o botão
+            submitBtn.parentNode.insertBefore(msgDiv, submitBtn.nextSibling);
+
+            // Remove a mensagem após 5 segundos
+            setTimeout(() => {
+                msgDiv.remove();
+            }, 5000);
+        }
+    </script>
+
+</body>
+
+</html>
